@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1081993654152",
+    "firebase_url": "https://nphomedelivery.firebaseio.com",
+    "project_id": "nphomedelivery",
+    "storage_bucket": "nphomedelivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081993654152:android:51b9a85794b58ab026543d",
+        "android_client_info": {
+          "package_name": "com.example.nphomedelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081993654152-5c6arpv9j4d5kv47h1endpvoo46kh2re.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nphomedelivery",
+            "certificate_hash": "3d0581d9d391236469209c2ba46c6956ad4c26f3"
+          }
+        },
+        {
+          "client_id": "1081993654152-4nv31qqavip1k3ti4p9pvm55qa8a9om4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0q_JTpA3NUWpkgC1HIdhrse0ZuW5XyPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081993654152-4nv31qqavip1k3ti4p9pvm55qa8a9om4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
