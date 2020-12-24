@@ -35,18 +35,49 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Admin Panel'),
       ),
       body: ListView(
         children: <Widget>[
-          Text("Ranish"),
           SizedBox(height: 30,),
+          RaisedButton(
+            child: Text("Manage Orders"),
+            onPressed: (){
+              Navigator.pushNamed(context, '/ordermanage');
+            },
+          ),
+          //Text("Ranish"),
+          SizedBox(height: 20,),
           RaisedButton(
             child: Text("add Item"),
             onPressed: (){
               Navigator.pushNamed(context, '/aditem');
             },
           ),
+          SizedBox(height: 20,),
+          //categories
+          RaisedButton(
+            child: Text("All Items"),
+            onPressed: (){
+              Navigator.pushNamed(context, '/categories');
+            },
+          ),
+          SizedBox(height: 20,),
+          RaisedButton(
+            child: Text("Add Special Offer Images"),
+            onPressed: (){
+              Navigator.pushNamed(context, '/carosaladd');
+            },
+          ),
+          SizedBox(height: 20,),
+          //maincarosal
+          RaisedButton(
+            child: Text("Special Offers Image View"),
+            onPressed: (){
+              Navigator.pushNamed(context, '/maincarosal');
+            },
+          ),
+          
           //Text(Auth.getCurrentUser()),
         ],
       ),
