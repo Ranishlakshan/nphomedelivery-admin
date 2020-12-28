@@ -3,9 +3,11 @@ import 'package:nphomedelivery/uploadpg.dart';
 import 'package:nphomedelivery/view_carosal.dart';
 import 'Authentication.dart';
 import 'Mapping.dart';
+import 'acceptedorders.dart';
 import 'adItem.dart';
 import 'add_carosalimages.dart';
 import 'categories.dart';
+import 'deliverdorders.dart';
 import 'neworders.dart';
 import 'ordermanage.dart';
 
@@ -40,6 +42,10 @@ class QuizThursday extends StatelessWidget {
         '/ordermanage': (context) => OrderManage(),
         //NewOrders
         '/neworders': (context) => NewOrders(),
+        //AcceptedOrders
+        '/acceptedorders': (context) => AcceptedOrders(),
+        //DeliveredOrders
+        '/deliveredorders': (context) => DeliveredOrders(),
 
       },
     );

@@ -4,13 +4,13 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'components/add_card_gridview.dart';
 import 'components/car_item_model.dart';
 
-class NewOrders extends StatefulWidget {
+class AcceptedOrders extends StatefulWidget {
   @override
-  _NewOrdersState createState() => _NewOrdersState();
+  _AcceptedOrdersState createState() => _AcceptedOrdersState();
 }
 
 
-class _NewOrdersState extends State<NewOrders> {
+class _AcceptedOrdersState extends State<AcceptedOrders> {
   
   List<OrderModel> _catagoryCbjects = <OrderModel>[];
   
@@ -20,7 +20,7 @@ class _NewOrdersState extends State<NewOrders> {
   @override
   void initState() {
     // TODO: implement initState
-    itemObject.getOrderData().then((result) {
+    itemObject.getAcceptedOrderData().then((result) {
       setState(() {
         ads = result;
       });
@@ -60,12 +60,12 @@ class _NewOrdersState extends State<NewOrders> {
           StreamBuilder(
             stream: ads,
             builder: (context, snapshot) {
-              if(snapshot.hasData){
+              if(!snapshot.hasData){
+            return Text('Connection Error !');
+          }
+          else{
             _catagoryCbjects = <OrderModel>[];
-                
-            for (int i = 0; i < snapshot.data.documents.length; i++){
-                //_listOfObjects = <CarModel>[]; _catagoryCbjects
-                //_catagoryCbjects = <OrderModel>[];
+              for (int i = 0; i < snapshot.data.documents.length; i++){
 
                 String value1,value2,value3,orderstate,total,docID,useraddress,username,userphone,userid;
 
@@ -88,17 +88,14 @@ class _NewOrdersState extends State<NewOrders> {
 
 
 
-
             if(snapshot.data.documents.length==0){
-              return Text("No New Orders At this Movement",style: TextStyle(fontSize: 17),);
+              return Text("No Accepted Orders at this Movement",style: TextStyle(fontSize: 17),);
             }else{
               return sliverGridWidget(context);
-            }
+            }            
+
 
             //return sliverGridWidget(context);
-          }
-          else{
-              return Text("Loading");
           }
             },
           ),

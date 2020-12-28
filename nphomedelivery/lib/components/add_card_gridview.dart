@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nphomedelivery/itemview.dart';
+import 'package:nphomedelivery/orderview.dart';
 import 'package:progressive_image/progressive_image.dart';
+//import 'package:nphomedelivery/';
 
 import 'car_item_model.dart';
 
@@ -269,22 +272,25 @@ class AadOrderCardGrid extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => ItemView(docID123: ad.docID)));
+              builder: (context) => Orderview(docID123: ad.docID)));
       },
       child: Card(
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          
+          Container(
+            //alignment: Alignment.bottomRight,
+            child: Text(" ${ad.docID}  ",style: TextStyle(color: Colors.grey),),
+          ),
           SizedBox(height: 5,),  
-          Text('  ${ad.value1}'.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+          Text("Customer ID : "+ '${ad.userid}'+ " | name :  "+  '${ad.username}'.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
           SizedBox(height: 2,),
           //Text('  Rs ${ad.value2}'),
           Row(
             children: <Widget>[
                   SizedBox(width: 5,),
                   Card(
-                child: Text(" Rs "+ad.value2, style:TextStyle(background: Paint()
+                child: Text(" Rs "+ad.total, style:TextStyle(background: Paint()
                         ..strokeWidth = 6.0
                         ..color = Colors.yellow
                         ..style = PaintingStyle.stroke
@@ -296,14 +302,15 @@ class AadOrderCardGrid extends StatelessWidget {
                 //margin: EdgeInsets.all(5),
               ),
               SizedBox(width: 30,),
-              IconButton(
-                alignment: Alignment.bottomRight,
-                icon: Icon(Icons.delete),
-                onPressed: (){
-                  //Firestore.instance.collection('cart').document('$email').collection("items").document(ad.docID).delete();
-                  
-                },
-              ),
+              //IconButton(
+              //  alignment: Alignment.bottomRight,
+              //  icon: Icon(Icons.delete),
+              //  onPressed: (){
+              //    //Firestore.instance.collection('orders').document(ad.docID).delete();
+              //    
+              //    
+              //  },
+              //),
               
             ],
           ),

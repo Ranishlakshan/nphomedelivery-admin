@@ -20,6 +20,8 @@ var cars_img;
 String title = '';
 String price = '';
 String phone = '';
+String discription;
+String quantity;
 
 //final String number = "123456789";
 //final String email = "dancamdev@example.com";
@@ -27,7 +29,7 @@ String numb;
 String desc;
 
 class _ItemViewState extends State<ItemView> {
-  @override
+  //@override
   //String docuID = Widget.documentid;
   
   List<String> _listOfImages = <String>[];
@@ -60,7 +62,7 @@ class _ItemViewState extends State<ItemView> {
   }
 
   
-
+  @override
   Widget build(BuildContext context) {
     //final  Map<String, Object>rcvdData = ModalRoute.of(context).settings.arguments;
     //docID = ${rcvdData['docuID'];}
@@ -140,7 +142,194 @@ class _ItemViewState extends State<ItemView> {
           SizedBox(height:50),
 
 
-          
+          RaisedButton(
+            child: Text("Update"),
+            onPressed: (){
+              showDialog(
+                    context: context,
+                    builder: (context) {
+                      int urnum = 1;
+                      //double subtotal = double.parse(ad.value2);
+                      String contentText = "Content of Dialog";
+                      return StatefulBuilder(
+                        builder: (context, setState) {
+                          return AlertDialog(
+                            //title: Text("Select Quantity"),
+                            content: Column(
+                              children: <Widget>[
+                                //SizedBox(height: 15,),
+                                
+                                //Text('Quantity'),
+                                //Text("Title is : "+title),
+                                TextFormField(
+                                  initialValue: title,
+                                  onChanged:  (value) {
+                                    //print(widget.cat1+","+widget.cat2);
+                                       title=value;         
+                                              },
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter Unit Name';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black)
+                                    ),
+                                    //hintText: 'Enter Unit Name',
+                                    labelText: 'Unit Name',
+                                    prefixIcon: Icon(Icons.add_circle) 
+                                  ),
+                                ),
+                                SizedBox(height: 5,),
+                                //PRICE
+                                TextFormField(
+                                  initialValue: price,
+                                  onChanged:  (value) {
+                                    //print(widget.cat1+","+widget.cat2);
+                                       price=value;         
+                                              },
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter Unit Price';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black)
+                                    ),
+                                    //hintText: 'Enter Unit Name',
+                                    labelText: 'Unit Price',
+                                    prefixIcon: Icon(Icons.add_circle) 
+                                  ),
+                                ),
+                                SizedBox(height: 5,),
+                                //Description
+                                TextFormField(
+                                  initialValue: discription,
+                                  onChanged:  (value) {
+                                    //print(widget.cat1+","+widget.cat2);
+                                       discription=value;         
+                                              },
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter Description';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black)
+                                    ),
+                                    //hintText: 'Enter Unit Name',
+                                    labelText: 'Description',
+                                    prefixIcon: Icon(Icons.add_circle) 
+                                  ),
+                                ),
+                                SizedBox(height: 5,),
+                                TextFormField(
+                                  initialValue: quantity,
+                                  onChanged:  (value) {
+                                    //print(widget.cat1+","+widget.cat2);
+                                       quantity=value;         
+                                              },
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter Quantity';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black)
+                                    ),
+                                    //hintText: 'Enter Unit Name',
+                                    labelText: 'Quantity',
+                                    prefixIcon: Icon(Icons.add_circle) 
+                                  ),
+                                ),
+                                //Text(urnum.toString() +" units", style: TextStyle(fontSize: 26),),
+                                //Text(ad.value1),
+                                //SizedBox(height: 20,),
+                                ////Row Start
+                                //
+                                //SizedBox(height: 15,),
+                                //Text("____________"),
+                                //SizedBox(height: 15,),
+
+                                RaisedButton(
+                                  child: Text("Update"),
+                                  onPressed: (){
+                                    Firestore.instance.collection('ads').document('${widget.docID123}').updateData({
+                                      'Description':discription,
+                                      'value2':price,
+                                      'value1':title,
+                                      'value4':quantity
+                                    });
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                //Row end
+                                //SizedBox(height: 30,),
+                                //Text("Item : "+ad.value1),
+                                //SizedBox(height: 10,),
+                                //Text("Unit Price : "+ad.value2),
+                                
+                                //Text("Total Price for this Product"),
+                                //SizedBox(height: 15,),
+                                ////Text('Rs '+subtotal.toString()+' /=', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),),
+//
+                                //SizedBox(height: 15,),
+                                //Text("____________"),
+                                //SizedBox(height: 15,),
+
+
+                                //2 nd row start
+                                
+                                //2 nd row END 
+
+
+                                
+                                
+                              ],
+                            ),
+                            //actions: <Widget>[
+                            //  FlatButton(
+                            //    onPressed: () => Navigator.pop(context),
+                            //    child: Text("Cancel"),
+                            //  ),
+                            //  FlatButton(
+                            //    onPressed: () {
+                            //      setState(() {
+                            //        contentText = "Changed Content of Dialog";
+                            //        urnum++;
+                            //      });
+                            //    },
+                            //    child: Text("Change"),
+                            //  ),
+                            //],
+                          );
+                        },
+                      );
+                    },
+                  );
+            },
+          ),
+
+          SizedBox(height: 15,),
+          RaisedButton(
+            child: Text('Delete'),
+            onPressed: (){
+              setState(() {
+                Firestore.instance.collection('ads').document('${widget.docID123}').delete();
+              
+                              Navigator.pop(context);
+                              
+                            });
+            },
+          ),
           //Text(' --- END --- '),
           
           
@@ -380,6 +569,7 @@ Widget getItems(){
         int len = dd.data.length;
         
         String jsonString = dd.data.toString();
+        //print("STRING ::::"+jsonString);
         String start = "[";
         String end = "]";
         final startIndex = jsonString.indexOf(start);
@@ -397,11 +587,27 @@ Widget getItems(){
           if(!(spec_list[j].contains('value') || spec_list[j].contains('searchkey')  || spec_list[j].contains('reviewstatus') || spec_list[j].contains('description')) ){
             viewList.add(spec_list[j]);
           }
+          if( spec_list[j].contains('Description') ){
+            discription = spec_list[j];
+            //print("DESCRIPTION IS :::::::"+discription);
+            discription = discription.replaceAll("Description:", "");
+            print("DESCRIPTION IS :::::::"+discription);
+          }
+          if( spec_list[j].contains('value4') ){
+            //discription = spec_list[j];
+            //print("DESCRIPTION IS :::::::"+discription);
+            //discription = discription.replaceAll("Description:", "");
+            //print("DESCRIPTION IS :::::::"+discription);
+            String quanti = spec_list[j].replaceAll('value4', 'Quantity');
+            viewList.add(quanti);
+            quantity = quanti.replaceAll('Quantity:', '');
+          }
           
         }
         
         int speclistlen = spec_list.length;
         int viewlistlen = viewList.length;
+        print("LENGTH OF LIST ::::::::::::::::::"+viewlistlen.toString());
         //
         return ListView.builder(
                 shrinkWrap: true,

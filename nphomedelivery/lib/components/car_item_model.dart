@@ -117,21 +117,36 @@ class OrderModel {
   //String caryear;
   //String carimage;
   String docID;
+  String useraddress;
+  String userid;
+  String username;
+  String userphone;
 
-  OrderModel(String value1, String value2,String value3, String value4, String value5,String docID){
+  OrderModel(String value1, String value2,String value3, String orderstate, String total,String docID,
+  String useraddress,String userid,String username,String userphone){
     this.value1 = value1;
     this.value2 = value2;
     this.value3 = value3;
-    this.orderstate = value4;
-    this.total = value5;
-    //this.carimage = carimage;
+    this.orderstate = orderstate;
+    this.total = total;
     this.docID = docID;
+    this.useraddress = useraddress;
+    this.userid = userid;
+    this.username = username;
+    this.userphone = userphone;
   }
 
   getOrderData() async {
-    return await Firestore.instance.collection('orders').snapshots();
+    return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "pending").snapshots();
   }
 
+  getAcceptedOrderData() async {
+    return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "accepted").snapshots();
+  }
+  //getDeliveredOrderData
+  getDeliveredOrderData() async {
+    return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "delivered").snapshots();
+  }
   
 //  getHotdealsData() async {
 //    return await Firestore.instance.collection('hotdeals').snapshots();

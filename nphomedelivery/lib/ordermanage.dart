@@ -25,14 +25,14 @@ class _OrderManageState extends State<OrderManage> {
           RaisedButton(
             child: Text("Accept orders"),
             onPressed: (){
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/acceptedorders');
             },
           ),
           SizedBox(height: 30,),
           RaisedButton(
             child: Text("Deliverd orders"),
             onPressed: (){
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/deliveredorders');
             },
           ),
           SizedBox(height: 30,),
